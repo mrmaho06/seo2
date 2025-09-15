@@ -1,2 +1,2 @@
 # semnettr
-<a href="https://atahancelebi.github.io/semnettr/">sem.net.tr</a>
+<a href="https://seolojist.com.tr">sem.net.tr</a>

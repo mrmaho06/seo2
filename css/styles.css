@@ -2089,7 +2089,7 @@ a:hover.back-to-top {
 
 	/* Screenshots section full background */
 .screenshots-section {
-  background-color: rgb(37, 150, 190);
+  background-color: #392D9B;
   padding: 60px 0; /* içerik için dikey boşluk */
 }
 
@@ -2098,32 +2098,85 @@ a:hover.back-to-top {
   color: #fff;
 }
 
-/* Grid layout */
-.grid-3x3 {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-  align-items: stretch;
+/* Portfolio Preview Cards */
+.preview-card {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+  height: 200px;
+  background-color: #2F2C3D;
 }
 
-/* Card */
+.preview-card:hover {
+  transform: translateY(-5px);
+}
+
+.preview-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.preview-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0,0,0,0.8));
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.preview-overlay h5 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #FFD700; /* Altın sarısı - dikkat çekici */
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+}
+
+/* Mobile adjustments for preview cards */
+@media (max-width: 768px) {
+  .screenshots-section {
+    background-color: #392D9B;
+  }
+  
+  .preview-card {
+    height: 150px;
+    margin-bottom: 15px;
+  }
+  
+  .preview-overlay {
+    padding: 15px;
+  }
+  
+  .preview-overlay h5 {
+    font-size: 1rem;
+    color: #FFD700; /* Altın sarısı - dikkat çekici */
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+  }
+}
+
+/* Bootstrap Grid Card Styling */
 .grid-card {
   position: relative;
   overflow: hidden;
   display: block;
   border-radius: 12px;
-  min-height: 180px;
+  min-height: 200px;
   text-decoration: none;
   box-shadow: 0 6px 18px rgba(0,0,0,0.08);
   transition: transform .25s ease, box-shadow .25s ease;
-}
-
-/* Responsive */
-@media (max-width: 992px) {
-  .grid-3x3 { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 576px) {
-  .grid-3x3 { grid-template-columns: 1fr; }
+  background: #f8f9fa;
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+  aspect-ratio: 4/3; /* Sabit 4:3 oran */
 }
 
 /* Image fits card */
@@ -2168,5 +2221,93 @@ a:hover.back-to-top {
   filter: brightness(.9);
 }
 
+/* Bootstrap Responsive Breakpoints */
+/* Extra Large devices (xl) - 1200px and up: 3 columns */
+@media (min-width: 1200px) {
+  .grid-card {
+    aspect-ratio: 4/3;
+  }
+}
+
+/* Large devices (lg) - 992px and up: 3 columns */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .grid-card {
+    aspect-ratio: 4/3;
+  }
+}
+
+/* Medium devices (md) - 768px and up: 2 columns */
+@media (min-width: 768px) and (max-width: 991px) {
+  .screenshots-section {
+    padding: 50px 0;
+  }
+  
+  .grid-card {
+    min-height: 180px;
+    aspect-ratio: 1/1; /* Kare şekil tablet için */
+    margin-bottom: 15px;
+  }
+  
+  .grid-card .overlay {
+    left: 6px;
+    right: 6px;
+    bottom: 6px;
+    height: 44px;
+    padding: 0 8px;
+  }
+  
+  .overlay-text {
+    font-size: 0.85rem;
+  }
+}
+
+/* Small devices (sm) - 576px and up: 2 columns */
+@media (min-width: 576px) and (max-width: 767px) {
+  .screenshots-section {
+    padding: 40px 0;
+  }
+  
+  .grid-card {
+    min-height: 160px;
+    aspect-ratio: 1/1; /* Kare şekil */
+    margin-bottom: 15px;
+  }
+  
+  .grid-card .overlay {
+    left: 6px;
+    right: 6px;
+    bottom: 6px;
+    height: 42px;
+    padding: 0 8px;
+  }
+  
+  .overlay-text {
+    font-size: 0.8rem;
+  }
+}
+
+/* Extra small devices (xs) - below 576px: 1 column */
+@media (max-width: 575px) {
+  .screenshots-section {
+    padding: 30px 0;
+  }
+  
+  .grid-card {
+    min-height: 200px;
+    aspect-ratio: 16/10; /* Mobil için geniş format */
+    margin-bottom: 15px;
+  }
+  
+  .grid-card .overlay {
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    height: 50px;
+    padding: 0 12px;
+  }
+  
+  .overlay-text {
+    font-size: 0.9rem;
+  }
 }
 /* end of min-width width 1200px */

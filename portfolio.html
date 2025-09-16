@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Portfolio - İşlerimiz</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <style>
+        /* Portfolio Page Specific Styles */
+        .portfolio-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 100px 0 80px;
+            color: white;
+            text-align: center;
+        }
+        
+        .portfolio-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .portfolio-hero p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            margin-bottom: 0;
+        }
+        
+        /* Mobile-First Responsive Grid */
+        .portfolio-grid {
+            padding: 60px 0;
+            background: #f8f9fa;
+        }
+        
+        .portfolio-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            background: white;
+            margin-bottom: 20px;
+            height: 100%;
+        }
+        
+        .portfolio-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .portfolio-image {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 75%; /* 4:3 aspect ratio */
+            overflow: hidden;
+        }
+        
+        .portfolio-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .portfolio-card:hover .portfolio-image img {
+            transform: scale(1.05);
+        }
+        
+        .portfolio-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .portfolio-card:hover .portfolio-overlay {
+            transform: translateY(0);
+        }
+        
+        .portfolio-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .portfolio-description {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-bottom: 0;
+        }
+        
+        /* Mobile Responsive Adjustments */
+        @media (max-width: 768px) {
+            .portfolio-hero {
+                padding: 60px 0 40px;
+            }
+            
+            .portfolio-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .portfolio-hero p {
+                font-size: 1.1rem;
+            }
+            
+            .portfolio-grid {
+                padding: 40px 0;
+            }
+            
+            .portfolio-image {
+                padding-bottom: 100%; /* 1:1 aspect ratio for mobile */
+            }
+            
+            .portfolio-card {
+                margin-bottom: 15px;
+            }
+            
+            .portfolio-overlay {
+                transform: translateY(0); /* Always visible on mobile */
+                background: rgba(0,0,0,0.7);
+            }
+            
+            .portfolio-title {
+                font-size: 1.1rem;
+            }
+            
+            .portfolio-description {
+                font-size: 0.85rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .portfolio-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .portfolio-image {
+                padding-bottom: 120%; /* Slightly taller for small phones */
+            }
+            
+            .portfolio-card {
+                margin-bottom: 12px;
+            }
+        }
+        
+        /* Extra small devices */
+        @media (max-width: 480px) {
+            .portfolio-image {
+                padding-bottom: 100%; /* Square for very small screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Portfolio Hero Section -->
+    <section class="portfolio-hero">
+        <div class="container">
+            <h1>İŞLERİMİZ</h1>
+            <p>Müşterilerimizin dijital dünyada nasıl büyüdüğünü görün</p>
+        </div>
+    </section>
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link page-scroll" href="#header">Ana Sayfa <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link page-scroll" href="#features">Hizmetlerimiz</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link page-scroll" href="#preview">İşlerimiz</a>
+            </li>
+
+            <!-- Dropdown Menu -->          
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle page-scroll" href="#details" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">Detaylar</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="sartlar-ve-kosullar.html"><span class="item-text">Hizmet Şartları</span></a>
+                    <div class="dropdown-items-divide-hr"></div>
+                    <a class="dropdown-item" href="gizlilik-politikasi.html"><span class="item-text">Gizlilik Politikası</span></a>
+                </div>
+            </li>
+            <!-- end of dropdown menu -->
+
+            <li class="nav-item">
+                <a class="nav-link page-scroll" href="#contact">İletişim</a>
+            </li>
+        </ul>
+        <span class="nav-item social-icons">
+            <span class="fa-stack">
+                <a href="https://instagram.com/seolojistcomtr?igshid=MzRlODBiNWFlZA==">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-instagram fa-stack-1x"></i>
+                </a>
+            </span>
+            <span class="fa-stack">
+                <a href="https://www.facebook.com/profile.php?id=100095546310580">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-facebook-f fa-stack-1x"></i>
+                </a>
+            </span>
+            <span class="fa-stack">
+                <a href="https://twitter.com/seolojistc40069">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-twitter fa-stack-1x"></i>
+                </a>
+            </span>
+        </span>
+    </div>
+    <!-- Portfolio Grid Section -->
+    <section class="portfolio-grid">
+        <div class="container">
+            <div class="row g-3">
+                
+                <!-- Portfolio Item 1 -->
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+                    <div class="portfolio-card">
+                        <a href="https://karmaden.com" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                            <div class="portfolio-image">
+                                <img src="images/karmaden-website.jpg" alt="Kar Maden" loading="lazy">
+                            </div>
+                            <div class="portfolio-overlay">
+                                <h3 class="portfolio-title">Kar Maden</h3>
+                                <p class="portfolio-description">Maden sektöründe dijital dönüşüm ve SEO optimizasyonu</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 2 -->
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+                    <div class="portfolio-card">
+                        <a href="https://karartmarble.com" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                            <div class="portfolio-image">
+                                <img src="images/karartmarble-website.jpg" alt="Kar Art Marble" loading="lazy">
+                            </div>
+                            <div class="portfolio-overlay">
+                                <h3 class="portfolio-title">Kar Art Marble</h3>
+                                <p class="portfolio-description">Mermer sektöründe e-ticaret optimizasyonu</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 3 -->
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+                    <div class="portfolio-card">
+                        <a href="https://onnahair.com" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                            <div class="portfolio-image">
+                                <img src="images/onnahair.jpg" alt="Onnahair" loading="lazy">
+                            </div>
+                            <div class="portfolio-overlay">
+                                <h3 class="portfolio-title">Onnahair</h3>
+                                <p class="portfolio-description">Protez saç sektöründe yerel SEO stratejisi</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 4 -->
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+                    <div class="portfolio-card">
+                        <a href="https://psikeart.com" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                            <div class="portfolio-image">
+                                <img src="images/psikeart.jpg" alt="Psikeart" loading="lazy">
+                            </div>
+                            <div class="portfolio-overlay">
+                                <h3 class="portfolio-title">Psikeart</h3>
+                                <p class="portfolio-description">Sanat ve kültür alanında dijital pazarlama</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 5 -->
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+                    <div class="portfolio-card">
+                        <a href="https://mesermobilya.com" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                            <div class="portfolio-image">
+                                <img src="images/mesermobilya.jpg" alt="Meser Mobilya" loading="lazy">
+                            </div>
+                            <div class="portfolio-overlay">
+                                <h3 class="portfolio-title">Meser Mobilya</h3>
+                                <p class="portfolio-description">Mobilya sektöründe e-ticaret platformu</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 6 -->
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+                    <div class="portfolio-card">
+                        <a href="https://hacettepebasketbolkulubu.com.tr/" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                            <div class="portfolio-image">
+                                <img src="images/hacettepe.jpg" alt="Hacettepe Basketbol" loading="lazy">
+                            </div>
+                            <div class="portfolio-overlay">
+                                <h3 class="portfolio-title">Hacettepe Basketbol</h3>
+                                <p class="portfolio-description">Spor kulübü için dijital varlık oluşturma</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 7 -->
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+                    <div class="portfolio-card">
+                        <a href="https://ppsurveys.com.au/" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                            <div class="portfolio-image">
+                                <img src="images/ppsurveys.jpg" alt="PPSurveys" loading="lazy">
+                            </div>
+                            <div class="portfolio-overlay">
+                                <h3 class="portfolio-title">PPSurveys</h3>
+                                <p class="portfolio-description">İnşaat sektöründe yer alan mühendislik firması için web sitesi tasarımı</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Home Button -->
+    <section class="py-5 bg-light">
+        <div class="container text-center">
+            <a href="index.html" class="btn btn-primary btn-lg">Ana Sayfaya Dön</a>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
